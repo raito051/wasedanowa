@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'header/header.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <img src= "{% static 'header/header-img/circle_of_waseda.png' %}" alt="logo" class="logo">
+        <nav class="nav-header-item">
+            <li><a href="{% url 'home:home_top' %}">login</a></li>
+            <li><a href="{% url 'home:home_top' %}">signup</a></li>
+            <!--ハンバーガーメニュー-->
+            <li>
+                <div id="navArea">
+                    <nav class="nav-header-hum">
+                        <div class="inner-header-hum">
+                            <ul class="inner-header-hum-ul">
+                                <li><a href="#">aa</a></li>
+                                <li><a href="#">bb</a></li>
+                                <li><a href="#">cc</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!--ハンバーガーメニューボタン-->
+                    <button type="button" class="toggle-btn-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                        <!--ハンバーガーメニュー背景-->
+                    <div id="mask"></div>
+                </div>
+            </li>
+        </nav>
+    </header>
+    
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="{% static 'header/header.js' %}"></script>
+</body>
+</html>

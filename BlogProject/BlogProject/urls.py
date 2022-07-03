@@ -6,5 +6,6 @@ urlpatterns = [
     # path('helloworld/', helloworldfunc),
     # path('helloworlsurl2', HelloWorldClass.as_view()
     path('accounts/', include('accounts.urls')),
-    path('', include('helloworldapp.urls'))
+    path('', include('helloworldapp.urls')),
+    path('home/',include('home_top.urls')),
 ]

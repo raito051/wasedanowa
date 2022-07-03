@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+.sports-list {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.sports-list-li {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+input[type="checkbox"]:checked + label {
+    background: #31A9EE;/* マウス選択時の背景色を指定する */
+    color: #ffffff; /* マウス選択時のフォント色を指定する */
+    }
+
+.sports-list-li input {
+    display: none;
+}
+
+.sports-list-li label {
+    font-size: 30px;
+}

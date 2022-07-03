@@ -1,0 +1,94 @@
+{% extends 'header/header.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="./../../static/home/home.css">
+{% endblock %}
+
+{% block content %}
+<!--ファーストイメージ-->
+<img src="{% static 'home/home-img/waseda.png' %}" alt="waseda">
+
+
+<div id="app">
+    <div class="first-circle"></div>
+    <div class="top-square"></div>
+    <div class="right-triangle" ></div>
+    <div class="bottom-square"></div>
+    <div class="left-triangle" ></div>
+    <div class="container"></div>
+</div>
+
+
+
+<!--サイト紹介-->
+<strong >
+    <div class="introduction">
+        <h2 class="introduction-title">contents</h2>
+        <ul class="introduction-contents">
+            <li>
+                <div class="introduction-contents-item-1">
+                    <h2>サークルをお探しの方へ</h2>
+                    <p>texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttexttexttexttexttext
+                    texttexttexttexttexttext</p>
+                </div>
+            </li>
+            <li>
+                <div class="introduction-contents-item-2">
+                    <h2>サークル長へ</h2>
+                    <p>texttexttexttexttexttexttexttexttexttext
+                        texttexttexttexttexttext</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</strong>
+
+
+<!--検索-->
+<strong class="circle-search" >
+    <div>
+        <h2>circle search</h2>
+        <ul class="circle-type">
+            <li>
+                <!--運動系検索-->
+                <p>運動系</p>
+                <ul class="circle-type-item">
+                    {% for lists in object_list %}
+                    <li>
+                        <button onclick="location.href='detail/motion/{{ lists.id }}'">
+                            <ul class="circle-type-item-list">
+                                <li><img src= {{lists.images}} alt="img"></li>
+                                <li><p>{{lists.name}}</p></li>
+                            </ul>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <!--文科系検索-->
+            <li>
+                <p>文科系</p>
+                <ul class="circle-type-item">
+                    {% for lists in culture_list %}
+                    <li>
+                        <button onclick="location.href='detail/culture/{{ lists.id }}'">
+                            <ul class="circle-type-item-list">
+                                <li><img src= {{lists.images}} alt="img"></li>
+                                <li><p>{{lists.name}}</p></li>
+                            </ul>
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</strong>
+
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="{% static 'home/home.js' %}" ></script>
+{% endblock %}

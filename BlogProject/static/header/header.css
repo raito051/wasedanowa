@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+body{
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+/*ヘッダー*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+    padding: 15px 0 0 10px;
+}
+
+.nav-header-item {
+    display: flex;
+    list-style: none;
+}
+
+.nav-header-item li {
+    padding: 15px 30px 0 30px;
+}
+
+.nav-header-item li a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* ハンバーガーメニュー*/
+
+.nav-header-hum {
+    display: block;
+    width: 220px;
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    left: -300px;
+    transition: all 0.5s;
+    z-index: 3;
+    opacity: 0;
+}
+
+.open nav {
+    left: 0px;
+    opacity: 1;
+}
+
+/*　ハンバーガーメニュー　インナー*/
+.inner-header-hum {
+    padding: 25px;
+    height: 1000px;
+}
+
+.inner-header-hum-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inner-header-hum-ul li {
+    margin: 0;
+    border-bottom: 1px solid #333;
+}
+
+.inner-header-hum-ul li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition-duration: 0.2s;
+    padding: 1rem;
+}
+
+.inner-header-hum-ul li a:hover {
+    background-color: #e4e4e4;
+}
+
+/* ハンバーガーメニュー ボタン*/
+.toggle-btn-header {
+    position: fixed;
+    display: block;
+    top: 20px;
+    right: 15px;
+    height: 30px;
+    z-index: 3;
+    cursor: pointer;
+    width: 35px;
+    border: none;
+    background: transparent;
+}
+
+.toggle-btn-header span {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.5s;
+    border-radius: 4px;
+}
+
+.toggle-btn-header span:nth-child(1) {
+    top: 4px;
+}
+
+.toggle-btn-header span:nth-child(2) {
+    top: 14px;
+}
+
+.toggle-btn-header span:nth-child(3) {
+    bottom: 4px;
+}
+
+.open .toggle-btn-header span {
+    background-color: #fff;
+}
+
+.open .toggle-btn-header span:nth-child(1) {
+    transform: translateY(10px) rotate(-315deg);
+}
+
+.open .toggle-btn-header span:nth-child(2) {
+    opacity: 0;
+}
+
+.open .toggle-btn-header span:nth-child(3) {
+    transform: translateY(-10px) rotate(315deg);
+}
+
+#mask {
+    display: none;
+    transition: all 0.5s;
+}
+
+.open #mask {
+    display: block;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0.8;
+    cursor: pointer;
+}
