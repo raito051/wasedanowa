@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+
+{%block title %}書籍一覧{% endblock %}
+
+{% block content %}
+       <div>
+             
+              {{object.title}}
+              <h3>{{object.text}}</h3>
+              <a href="{% url 'list-book' %} " class="btn btn-primary">一覧へ</a>
+             
+
+              <!-- {{object.category}} -->
+       </div>
+{% endblock content %}

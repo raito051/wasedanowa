@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div>
+               <h1 class="title">サークル一覧</h1>
+        </div>
+        <div class="item-wrap">
+        <a href="{% url 'accounts:login' %} " class="create-button">login</a>
+        <a href="{% url 'accounts:logout' %} " class="create-button">logout</a>
+ 
+        </div>
+    </div>
+   
+ {% block content %}{% endblock %}
+</body>
+</html>

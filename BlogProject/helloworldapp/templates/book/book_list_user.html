@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{%block title %}書籍一覧{% endblock %}
+{% block content %}
+<div class="container">
+       <div>
+              <h1 class="title">サークル一覧</h1>
+       </div>
+       <div class="item-wrap">
+       <a href="{% url 'create-book' %} " class="create-button">login</a>
+       <a href="{% url 'create-book' %} " class="create-button">signup</a>
+
+       </div>
+   </div>
+<div class="item-wrap">
+       {% for item in object_list %}
+       
+              <ul class="list">
+                     <li>タイトル：{{item.title}}</li>
+                     <!-- <li>{{item.text}}</li> -->
+                     <li>カテゴリー：{{item.category}}</li>
+                     <a href="{% url 'detail-book' item.pk %}" class="btn btn-primary">詳細へ</a>
+              </ul>
+       
+       
+       {% endfor %}
+</div>
+{% endblock content %}
