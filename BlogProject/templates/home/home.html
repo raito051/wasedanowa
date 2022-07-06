@@ -7,11 +7,10 @@
 
 {% block content %}
 <!--ファーストイメージ-->
-<img src="{% static 'home/home-img/waseda.png' %}" alt="waseda">
+<img src="{% static 'home/home-img/waseda-sample.jpg' %}" alt="waseda">
 
 
 <div id="app">
-    <div class="first-circle"></div>
     <div class="top-square"></div>
     <div class="right-triangle" ></div>
     <div class="bottom-square"></div>
@@ -46,6 +45,9 @@
     </div>
 </strong>
 
+<section class="container-wave">
+    <div class="wave"></div>
+</section>
 
 <!--検索-->
 <strong class="circle-search" >
@@ -58,7 +60,7 @@
                 <ul class="circle-type-item">
                     {% for lists in object_list %}
                     <li>
-                        <button onclick="location.href='detail/motion/{{ lists.id }}'">
+                        <button onclick="location.href='detail/motion/{{ lists.id }}'" class="circle-type-item-button">
                             <ul class="circle-type-item-list">
                                 <li><img src= {{lists.images}} alt="img"></li>
                                 <li><p>{{lists.name}}</p></li>
@@ -87,6 +89,10 @@
         </ul>
     </div>
 </strong>
+
+<div id="circle-search-container">
+    <div class="circle-search-container" ></div>
+</div>
 
 
 <script src="https://unpkg.com/scrollreveal"></script>

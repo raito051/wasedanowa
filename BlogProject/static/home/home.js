@@ -3,38 +3,17 @@ var app = new Vue ({
   el: '#app',
   mounted() {
     const container = document.querySelector('.container')
-    for(var i=0;i<=50; i++){
+    for(var i=0;i<=10; i++){
       const blocks = document.createElement('div');
       blocks.classList.add('blocks');
-      container.appendChild(blocks)
+      container.appendChild(blocks);
     }
     anime({
-      targets: '.first-circle ', // 対象を指定
-      translateY: [
-        {value:350,duration: 1000, delay: 500 },
-      ],
-      translateX: [
-        {value:1000,duration: 1000, delay:5000}
-      ],
-      easing: 'cubicBezier(.5, .05, .1, .3)'
-    });
-    anime({
-      targets: '.blocks',
-      translateX: function(){
-        return anime.random(-800,700)
-      },
-      translateY: function(){
-        return anime.random(-300,250)
-      },
-      scale: function(){
-        return anime.random(0.1,0.2,)
-      }
-    })
-    anime({
       targets: '.left-triangle ', // 対象を指定
-      translateX: -120,
+      translateX: -500,
       duration: 570,
-      easing: 'cubicBezier(.5, .05, .1, .3)'
+      easing: 'cubicBezier(.5, .05, .1, .3)',
+      rotate:45,
     });
     anime({
       targets: '.bottom-square',
@@ -45,9 +24,10 @@ var app = new Vue ({
     });
     anime({
       targets: '.right-triangle',
-      translateX: 300,
+      translateX: 170,
       duration: 1000,
       delay: 1800,
+      rotate:-45,
       easing: 'cubicBezier(.5, .05, .1, .10)'
     });
     anime({
@@ -57,6 +37,19 @@ var app = new Vue ({
       delay: 2800,
       easing: 'cubicBezier(.5, .05, .1, .3)'
     });
+  },
+})
+
+var circle_search = new Vue ({
+  delimiters: ["[[", "]]"],
+  el: '#circle-search-container',
+  mounted() {
+    const container = document.querySelector('.circle-search-container')
+    for(var i=0;i<=20; i++){
+      const circle_search_blocks = document.createElement('div');
+      circle_search_blocks.classList.add('circle-search-blocks');
+      container.appendChild(circle_search_blocks);
+    }
   }
 })
 
@@ -99,3 +92,51 @@ ScrollReveal().reveal('.circle-type-item-list', {
   origin:'bottom',
   distance: '50px',
 });
+
+function animateBlocks (){
+  anime({
+    targets: '.blocks',
+    translateX: function(){
+      return anime.random(-800,700)
+    },
+    translateY: function(){
+      return anime.random(-500,250)
+    },
+    scale: function(){
+      const random_scale = Math.random(0,30)
+      return random_scale
+    },
+    duration:function(){
+      return anime.random(3000,5000)
+    },
+    delay: anime.stagger(100),
+    complete: animateBlocks,
+  });
+}
+
+function animateBlocks_circleSearch (){
+  anime({
+    targets: '.circle-search-blocks',
+    translateX: function(){
+      return anime.random(-800,700)
+    },
+    translateY: function(){
+      return anime.random(-1000,340)
+    },
+    scale: function(){
+      const random_scale = Math.random(0,30)
+      return random_scale
+    },
+    duration:function(){
+      return anime.random(5000,8000)
+    },
+    delay: function(){
+      return anime.random(100,5000)
+    },
+    complete: animateBlocks_circleSearch,
+    easing: 'cubicBezier(.5, .05, .1, .3)',
+  });
+}
+
+animateBlocks_circleSearch ()
+animateBlocks();

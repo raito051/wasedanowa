@@ -1,12 +1,17 @@
 from imp import new_module
 import math
 from pickle import NONE
+from turtle import circle
 from django.shortcuts import render
 from requests import request
 from .list import Event_List, Sports_List
 from .models import Event_Model,Event_Motion_Model
+from helloworldapp.models import Book
 from django.views.generic import View, TemplateView, ListView, DetailView
-
+from django.shortcuts import get_object_or_404
+from django.http.response import JsonResponse
+import json
+from django.core import serializers
 #トップページ
 class ModelDetailList(ListView):
     model = Event_Motion_Model
@@ -14,7 +19,6 @@ class ModelDetailList(ListView):
         
     def get_context_data(self, *args, **kwargs):
         motion_model = Event_Motion_Model.objects.all()
-        print(motion_model)
         if not motion_model:
             #運動系の名前,写真をDBに挿入
             event_list_motion = Event_List.Event_List_Motion
@@ -53,10 +57,12 @@ def Motion_ModelDetailView(request,pk):
         sports_list = Sports_List.Other_Sports
     
     event_motion_model = Event_Motion_Model.objects.all().values()
+    circle_list = Book.objects.all().values()
     
     context = {
                 'sports_list':sports_list,
-                'event_motion_model':event_motion_model
+                'event_motion_model':event_motion_model,
+                'circle_lists':circle_list,
                }
     return render(request, './../templates/home/detail.html', context)
 
@@ -70,7 +76,36 @@ class Culture_ModelDetailView(DetailView):
         context['culture_list'] = Event_Model.objects.all().values()
         return context
     
+def DeleteBookView(request,pl,pk):
+    chapter = get_object_or_404(Book, pk=pl)
+    detail_id = pl
+    model = Book.objects.get(id=detail_id)
+    print(model)
+    context_circle_detail = {'circle_detail':model,
+                             'chapter':chapter,
+                             }
+    return render(request,'./../templates/home/book_detail.html', context_circle_detail)
+
+def Search(request):
+    circle_detail_all = Book.objects.all().values()
+    print(circle_detail_all)
+    circle_detail_sub = []
+    circle_detail = []
+    circle_detail_len = len(circle_detail_all)
+
+    for i in range(circle_detail_len):
+        circle_detail_sub.append(circle_detail_all[i])
     
+    for row in circle_detail_sub:
+        circle_detail.append(row["title"])
+        
+    print(circle_detail)
+    post = serializers.serialize("json", Book.objects.all())
+    context = {
+        'circle_detail': circle_detail,
+        'post':post
+    }
+    return render(request,'./../templates/home/search.html',context)
 
 
 

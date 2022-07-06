@@ -26,12 +26,17 @@
     {% for list in sports_list %}
     <ul>
         <template v-for="item in items">
-            <li v-if="'{{list}}' == item">cc</li>
+            <li v-if="'{{list}}' == item">
+                {% for circle_list in circle_lists %}
+                    {% if circle_list.category == list %}
+                    <a href="{{circle_list.id}}" class="btn btn-primary">詳細へ</a>
+                    {% endif %}
+                {% endfor %}
+            </li>
         </template>
     </ul>
     {% endfor %}
 </div>
-
 
 <script src="{% static 'home/detail.js' %}"></script>
 {% endblock %}

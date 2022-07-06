@@ -11,6 +11,8 @@ body{
     display: flex;
     justify-content: space-between;
     height: 65px;
+    z-index: 5;
+    background-color: white;
 }
 
 .logo {

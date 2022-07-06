@@ -6,40 +6,27 @@ img {
   height: auto;
 }
 
-.first-circle {
-	width: 100px;
-	height: 100px;
-  border: 10px solid pink;
-	border-radius: 50%;
-  z-index: 3;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 50% 50%;
-}
-
 .blocks {
 	width: 100px;
 	height: 100px;
-  border: 10px solid pink;
+  opacity: 0.7;
+  background-color: #F99F48;
 	border-radius: 50%;
   z-index: 3;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform-origin: 50% 50%;
 }
 
 .left-triangle{
   opacity: 2;
   position: absolute;
-  width: 0;
-  height: 0;
-  top: -39px;
-  left: 0;
-  border-top: 88vh solid transparent;
-  border-bottom: 43vh solid transparent;
-  border-left: 50vw solid #6aa7cd;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -45%;
+  background: linear-gradient(to right top,#78BBE6, #1B435D);
+  transform: rotate(45deg);
 }
 
 .bottom-square {
@@ -49,19 +36,18 @@ img {
   height: 80%;
   top: 200px;
   left: 0;
-  background-color: red;
+  background: linear-gradient(to right,#1B435D, #78BBE6);
+  overflow-y: hidden;
 }
 
 .right-triangle{
   opacity: 2;
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
   top: -39px;
-  right: 0;
-  border-top: 88vh solid transparent;
-  border-bottom: 43vh solid transparent;
-  border-right: 50vw solid #359d2c;
+  right: -50%;
+  background: linear-gradient(to right bottom,#78BBE6, #D5EEFF);
 }
 
 .top-square {
@@ -69,15 +55,18 @@ img {
   opacity: 2;
   position: absolute;
   width: 100%;
-  height: 85%;
+  height: 90%;
   left: 0;
-  background-color: rgb(205, 34, 154);
+  background-color: #1B435D;
 }
 
 
 /*サイト紹介*/
 .introduction {
   list-style: none;
+  z-index: 5;
+  position: absolute;
+  left: -10px;
 }
 
 .introduction-title {
@@ -88,6 +77,9 @@ img {
 
 .introduction-contents {
   list-style: none;
+  background-color: #78BBE6;
+  padding-top: 100px;
+  padding-bottom: 5%;
 }
 
 .introduction-contents-item-1 {
@@ -99,7 +91,7 @@ img {
   max-width: 1530px;
   margin: 0 auto;
   padding-left: 5%;
-  border-left: solid 10px #ffc06e;
+  border-left: solid 10px #F99F48;
 }
 
 .introduction-contents-item-1 p {
@@ -122,24 +114,30 @@ img {
   padding-top: 170px;
   padding-bottom: 92px;
   max-width: 1530px;
-  margin: 0 auto;
-  padding: 10%;
-  border-right: solid 10px #ffc06e;
+  margin: 0 30px auto;
+  padding: 10% 0 10% 0;
+  border-right: solid 10px #F99F48;
 }
 
 .introduction-contents-item-2 p {
   width: 41%;
-  margin: 0 30px 0 30px;
+  padding-left: 10%;
 }
 
 .introduction-contents-item-2 h2 {
   width: 41%;
-  margin: 0 30px 0 30px;
   font-weight: 450;
   font-size: 40px;
+  margin-right: -10%;
 }
 
 /* サークル一覧表示 */
+.circle-search {
+  position: absolute;
+  top: 300%;
+  z-index: 2;
+}
+
 .circle-search div h2 {
   text-align: center;
   font-weight: 500;
@@ -149,13 +147,14 @@ img {
 .circle-type {
     display: block;
     margin: 0 10px 0 0;
-    background-color: rgb(180, 178, 178);
+
 }
 
 .circle-type li {
   list-style: none;
   font-size: 30px;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 .circle-type-item {
@@ -167,8 +166,12 @@ img {
   padding-left: 10px;
 }
 
-.circle-type li {
-  margin-top: 10px;
+.circle-type-item-button {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  border: solid 10px #1B435D;
+  background-color: #D5EEFF;
 }
 
 .circle-type-item-list img {
@@ -188,8 +191,66 @@ img {
   font-weight: 550;
 }
 
-#elem .square {
-  width: 60px;
-  height: 60px;
-  background: #39A2AE;
+/* wave */
+
+.container-wave {
+  position: relative;
+  background: #fff;
+  height: 30vh;
+  width: 110%;
+  left: -5%;
+}
+
+.wave {
+  position: absolute;
+  height: 107px;
+  width: 100%;
+  background: #fff;
+  bottom: 0;
+  z-index: 5;
+  top: 80%;
+}
+
+.wave::before, .wave::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+}
+
+.wave::before {
+  width: 55%;
+  height: 109%;
+  background-color: #78BBE6;
+  right: -1.5%;
+  top: 60%;
+}
+.wave::after {
+  width: 55%;
+  height: 100%;
+  background-color: #fff;
+  left: -1.5%;
+  top: 40%;
+}
+
+.circle-search-container {
+  position: absolute;
+  background-color: #78BBE6;
+  width: 100%;
+  height: 200%;
+  z-index: 1;
+  top: 320%;
+  left: 0;
+}
+
+.circle-search-blocks {
+  width: 100px;
+	height: 100px;
+  opacity: 0.7;
+  background-color: #1B435D;
+	border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  top: 70%;
+  left: 50%;
 }
